@@ -6,7 +6,7 @@ Easiest Neovim configurations on Windows: init.vim using [vim-plug](https://gith
 **Steps to follow:**
 1. Download [Neovim](https://neovim.io/)
 2. Create a folder ```nvim``` inside ```%appdata%/Local/```
-3. Paste the [init.vim]() file inside the ```nvim``` folder
+3. Paste the [init.vim](https://github.com/nchhillar2004/nvim-config/blob/main/init.vim) file inside the ```nvim``` folder
 4. Open the folder in terminal and enter ```nvim init.vim```
 5. Run ```:PlugInstall```
 6. Then run ```:CocInstall coc-python coc-tsserver coc-java coc-clangd coc-html coc-css coc-json``` *([Node.js](https://nodejs.org) is required for this step)*
