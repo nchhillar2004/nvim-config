@@ -26,7 +26,7 @@ Easiest Neovim configurations on Windows: init.vim using [vim-plug](https://gith
 3. Focus NERDTree: ```Space + f```
 4. Refresh NERDTree: ```Space + r```
 5. Search File: ```Space + ff```
-6. 7. Save file: ```Ctrl + s```
+6. Save file: ```Ctrl + s```
 7. Changing ColorScheme:
    1. rost-pine: ```Space + 1``` *(default)*
    2. rose-pine-moon: ```Space + 2```
