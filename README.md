@@ -5,12 +5,14 @@ Easiest Neovim configurations on Windows: init.vim using [vim-plug](https://gith
 
 **Steps to follow:**
 1. Download [Neovim](https://neovim.io/)
-2. Create a folder ```nvim``` inside ```%appdata%/Local/```
-3. Paste the [init.vim](https://github.com/nchhillar2004/nvim-config/blob/main/init.vim) file inside the ```nvim``` folder
-4. Open the folder in terminal and enter ```nvim init.vim```
-5. Run ```:PlugInstall```
-6. Then run ```:CocInstall coc-python coc-tsserver coc-java coc-clangd coc-html coc-css coc-json``` *([Node.js](https://nodejs.org) is required for this step)*
-7. Restart Neovim and enjoy :)
+2. Install [vim-plug](https://github.com/junegunn/vim-plug) *(Required step)*
+3. Create a folder ```nvim``` inside ```%appdata%/Local/``` *(Windows)*
+4. Create a folder ```nvim``` inside ```~/.config/``` *(Linux)*
+5. Paste the [init.vim](https://github.com/nchhillar2004/nvim-config/blob/main/init.vim) file inside the ```nvim``` folder
+6. Open the folder in terminal and enter ```nvim init.vim```
+7. Run ```:PlugInstall```
+8. Then run ```:CocInstall coc-python coc-tsserver coc-java coc-go coc-clangd coc-html coc-css coc-json``` *([Node.js](https://nodejs.org) is required for this step)*
+9. Restart Neovim and enjoy :)
 
 ## Screenshots
 #### rose-pine theme, coc suggestions, NERDTree, Terminal
@@ -32,6 +34,8 @@ Easiest Neovim configurations on Windows: init.vim using [vim-plug](https://gith
    2. rose-pine-moon: ```Space + 2```
    3. kanagawa-wave: ```Space + 3```
    4. kanagawa-dragon: ```Space + 4```
+   5. default nvim: ```Space + 5```
+   6. sonokai ```Space + 6```
 
 ## Troubleshooting
 1. If icons are not visible, install Nerd font. I recommend: [oh-my-posh](https://ohmyposh.dev/)
