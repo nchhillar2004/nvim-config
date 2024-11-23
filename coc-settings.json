@@ -5,5 +5,6 @@
             "args" : [ "--slave", "-e", "languageserver::run()"],
             "filetypes" : ["r"]
         }
-    }
+    },
+    "diagnostic.enable": false
 }
