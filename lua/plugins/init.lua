@@ -6,11 +6,12 @@ return {
     { 'mg979/vim-visual-multi', branch = 'master' },
     { 'tpope/vim-fugitive' },
     { 'tpope/vim-sensible' },
-    { 'preservim/nerdtree' },
     { 'vim-airline/vim-airline' },
+    { 'ryanoasis/vim-devicons' },
     { 'neoclide/coc.nvim', branch = 'release' },
-    { 'echasnovski/mini.icons', version = '*' },
     { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
     { 'prettier/vim-prettier' },
-    { 'akinsho/bufferline.nvim', version = "*", dependencies = { 'nvim-tree/nvim-web-devicons' } }
+    { 'akinsho/bufferline.nvim', version = "*" },
+    { 'nvim-tree/nvim-tree.lua' },
+    { 'nvim-tree/nvim-web-devicons' }
 }

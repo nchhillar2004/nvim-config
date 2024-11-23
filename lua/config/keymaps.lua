@@ -2,15 +2,16 @@ vim.g.mapleader = " "
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set('n', '<leader>t', ':terminal<CR>', opts)
-vim.keymap.set('n', '<leader>e', ':NERDTreeToggle<CR>', opts)
-vim.keymap.set('n', '<leader>n', ':NERDTreeToggle<CR>:wincmd o<CR>', opts)
-vim.keymap.set('n', '<leader>r', ':NERDTreeRefreshRoot<CR>', opts)
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
+vim.keymap.set('n', '<leader>n', ':NvimTreeOpen<CR>:wincmd o<CR>', opts)
 vim.keymap.set('n', '<leader>f', ':normal! gg=G<CR>', opts)
 vim.keymap.set('n', '<leader>p', ':Prettier<CR>', opts)
 vim.keymap.set('n', '<leader>b', ':b#<CR>', opts)
 
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 vim.keymap.set('t', '<leader>b', '<C-\\><C-n>:b#<CR>', opts)
+
+vim.keymap.set('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<CR>"', { expr = true, silent = true })
 
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = 'Telescope find files' })

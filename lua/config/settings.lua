@@ -14,18 +14,29 @@ vim.o.wildmenu = true
 vim.o.title = true
 vim.o.cursorline = true
 vim.opt.termguicolors = true
+vim.o.encoding = 'utf-8'
+vim.o.fileencodings = 'utf-8'
+vim.o.fileencoding = 'utf-8'
+
+vim.g.airline_powerline_fonts = 1
+vim.g.webdevicons_enable = 1
+vim.g.webdevicons_enable_airline_tabline = 1
+vim.g.webdevicons_enable_airline_statusline = 1
 
 vim.cmd('colorscheme rose-pine')
 vim.cmd('highlight Normal guibg=none')
 
-vim.keymap.set('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "<CR>"', { expr = true, silent = true })
-
 require("bufferline").setup{}
-
-vim.g.NERDTreeShowHidden = 1
-vim.g.NERDTreeQuitOnOpen = 1
+require("nvim-tree").setup{
+    actions = {
+        open_file = {
+            quit_on_open = true,
+        },
+    },
+}
 
 vim.cmd([[
-  autocmd BufRead,BufNewFile *.ejs set filetype=html
-  autocmd BufRead,BufNewFile *.jsp set filetype=html
+autocmd BufRead,BufNewFile *.ejs set filetype=html
+autocmd BufRead,BufNewFile *.jsp set filetype=html
 ]])
+
