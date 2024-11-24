@@ -24,7 +24,7 @@ vim.keymap.set('n', '<leader>s', '<cmd>vsplit<CR>') -- vertical split
 vim.keymap.set('n', '<leader>0', '<cmd>highlight Normal guibg=none<CR>')
 vim.keymap.set('n', '<leader>1', '<cmd>highlight Normal guibg=#000000<CR>')
 vim.keymap.set('n', '<leader>2', '<cmd>colorscheme rose-pine-main<CR>')
-vim.keymap.set('n', '<leader>3', '<cmd>colorscheme sonokai<CR>')
+vim.keymap.set('n', '<leader>3', '<cmd>colorscheme kanagawa-dragon<CR>')
 vim.keymap.set('n', '<leader>4', '<cmd>colorscheme catppuccin<CR>')
 vim.keymap.set('n', '<leader>5', '<cmd>colorscheme default<CR>')
 

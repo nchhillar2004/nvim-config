@@ -2,7 +2,7 @@
 return {
     { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'rose-pine/neovim', name = 'rose-pine' },
-    { 'sainnhe/sonokai' },
+    { 'rebelot/kanagawa.nvim' },
     { 'catppuccin/nvim' },
     { 'mg979/vim-visual-multi', branch = 'master' },
     { 'tpope/vim-fugitive' },

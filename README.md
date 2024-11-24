@@ -2,7 +2,7 @@
 This is my own nvim config using [lazy.nvim](https://github.com/folke/lazy.nvim) and some selected plugins.
 
 ## Installation
-Download [NeoVim](https://neovim.io/)
+Download [NeoVim](https://neovim.io/).
 Then, run the following commands according to your operating system
 
 ### Linux
@@ -24,7 +24,7 @@ git clone https://github.com/nchhillar2004/nvim-config.git %appdata%\Local\nvim
 ```
 Run neovim using the ```nvim``` command in terminal. All the plugins will be installed automatically.
 
-At last install LSP
+At last run this command to install LSP inside nvim:
 ```
 :CocInstall coc-java coc-rust-analyzer coc-go coc-clangd coc-tsserver coc-pyright coc-r-lsp coc-lua coc-prettier coc-html coc-css coc-json coc-perl @yaegassy/coc-tailwindcss3
 ```
@@ -47,7 +47,7 @@ At last install LSP
   - `Space + 0`: Remove background color (`highlight Normal guibg=none`)
   - `Space + 1`: Set background to black (`highlight Normal guibg=#000000`)
   - `Space + 2`: Use `rose-pine-main` colorscheme
-  - `Space + 3`: Use `sonokai` colorscheme
+  - `Space + 3`: Use `kanagawa` colorscheme
   - `Space + 4`: Use `catppuccin` colorscheme
   - `Space + 5`: Use default colorscheme
 

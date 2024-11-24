@@ -4,6 +4,17 @@
             "command": "/usr/bin/R",
             "args" : [ "--slave", "-e", "languageserver::run()"],
             "filetypes" : ["r"]
+        },
+        "haskell": {
+            "command": "haskell-language-server-wrapper",
+            "args": ["--lsp"],
+            "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+            "filetypes": ["haskell", "lhaskell"]
+        },
+        "fortran": {
+            "command": "fortls",
+            "filetypes": ["fortran"],
+            "rootPatterns": [".fortls", ".git/"]
         }
     },
     "diagnostic.enable": false

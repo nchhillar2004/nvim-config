@@ -10,7 +10,6 @@ vim.o.expandtab = true
 vim.o.wrap = false
 vim.o.hlsearch = false
 vim.o.incsearch = true
-
 -- set cursor to block
 vim.o.guicursor = ""
 vim.o.scrolloff = 8
@@ -30,12 +29,32 @@ vim.g.webdevicons_enable_airline_tabline = 1
 vim.g.webdevicons_enable_airline_statusline = 1
 
 -- set default colorscheme
-vim.cmd('colorscheme rose-pine')
+vim.cmd('colorscheme kanagawa-dragon')
 -- set default background
-vim.cmd('highlight Normal guibg=none') -- here I use a background image so it's none, i.e transparent bg
+-- vim.cmd('highlight Normal guibg=none') -- here I use a background image so it's none, i.e transparent bg
 
 -- setup & config plugins for custom use
-require("bufferline").setup{}
+require("bufferline").setup({
+    options = {
+        themable = true,
+        numbers = "buffer_id",
+        separator_style = "slant",
+        offsets = {
+            {
+                filetype = "NvimTree",
+                text = "Nvim Tree",
+                text_align = "center",
+                separator = true
+            }
+        },
+        hover = {
+            enable = true,
+            delay = 200,
+            reveal = {'close'}
+        }
+    }
+})
+
 require("nvim-tree").setup{
     actions = {
         open_file = {
@@ -43,6 +62,16 @@ require("nvim-tree").setup{
         },
     },
 }
+
+require('kanagawa').setup({
+    compile = false,             -- enable compiling the colorscheme
+    undercurl = true,            -- enable undercurls
+    commentStyle = { italic = true },
+    functionStyle = {},
+    keywordStyle = { italic = true},
+    statementStyle = { bold = true },
+    typeStyle = {},
+})
 
 -- read .ejs and .jsp files as .html
 vim.cmd([[
