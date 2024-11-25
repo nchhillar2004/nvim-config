@@ -6,6 +6,7 @@ return {
     { 'navarasu/onedark.nvim' },
     { 'mg979/vim-visual-multi', branch = 'master' },
     { 'tpope/vim-fugitive' },
+    { 'lukas-reineke/indent-blankline.nvim' },
     { 'nvim-treesitter/nvim-treesitter-context' },
     { 'tpope/vim-sensible' },
     { 'vim-airline/vim-airline' },

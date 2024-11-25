@@ -30,57 +30,9 @@ vim.g.webdevicons_enable_airline_statusline = 1
 
 -- set default colorscheme
 vim.cmd('colorscheme kanagawa-dragon')
+
 -- set default background
 -- vim.cmd('highlight Normal guibg=none') -- here I use a background image so it's none, i.e transparent bg
-
-require('onedark').setup {
-    style = 'darker'
-}
-
--- setup & config plugins for custom use
-require("bufferline").setup({
-    options = {
-        themable = true,
-        numbers = "buffer_id",
-        separator_style = "slant",
-        offsets = {
-            {
-                filetype = "NvimTree",
-                text = "Nvim Tree",
-                text_align = "center",
-                separator = true
-            }
-        },
-        hover = {
-            enable = true,
-            delay = 200,
-            reveal = {'close'}
-        }
-    }
-})
-
-require("nvim-tree").setup{
-    actions = {
-        open_file = {
-            quit_on_open = true,
-        },
-    },
-}
-
-require('treesitter-context').setup{
-    enable = true,
-    max_lines = 0,
-}
-
-require('kanagawa').setup({
-    compile = false,             -- enable compiling the colorscheme
-    undercurl = true,            -- enable undercurls
-    commentStyle = { italic = true },
-    functionStyle = {},
-    keywordStyle = { italic = true},
-    statementStyle = { bold = true },
-    typeStyle = {},
-})
 
 -- read .ejs and .jsp files as .html
 vim.cmd([[

@@ -1,6 +1,7 @@
 require("config.lazy")
 require("config.keymaps")
 require("config.settings")
+require("config.plugins")
 
 -- setup languages for better syntax highlight
 require'nvim-treesitter.configs'.setup {
