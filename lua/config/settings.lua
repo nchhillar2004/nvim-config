@@ -67,6 +67,11 @@ require("nvim-tree").setup{
     },
 }
 
+require('treesitter-context').setup{
+    enable = true,
+    max_lines = 0,
+}
+
 require('kanagawa').setup({
     compile = false,             -- enable compiling the colorscheme
     undercurl = true,            -- enable undercurls
