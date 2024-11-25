@@ -33,6 +33,10 @@ vim.cmd('colorscheme kanagawa-dragon')
 -- set default background
 -- vim.cmd('highlight Normal guibg=none') -- here I use a background image so it's none, i.e transparent bg
 
+require('onedark').setup {
+    style = 'darker'
+}
+
 -- setup & config plugins for custom use
 require("bufferline").setup({
     options = {
