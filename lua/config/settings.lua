@@ -6,6 +6,8 @@ vim.o.smartindent = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
+
+-- ADD THE FUNCTIONALITY OF TEXT WRAP ONLY WHEN A LINE REACHES 300 CHARACTERS
 -- disable text wrap
 vim.o.wrap = false
 vim.o.colorcolumn='120'
