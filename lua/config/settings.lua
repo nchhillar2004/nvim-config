@@ -8,6 +8,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 -- disable text wrap
 vim.o.wrap = false
+vim.o.colorcolumn='120'
 vim.o.hlsearch = false
 vim.o.incsearch = true
 -- set cursor to block
@@ -17,7 +18,7 @@ vim.opt.completeopt = 'noinsert', 'menuone', 'noselect'
 vim.o.wildmenu = true
 vim.o.title = true
 vim.o.cursorline = true
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 
 -- used by vim-devicons and airline
 vim.o.encoding = 'utf-8'
