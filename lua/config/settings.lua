@@ -32,7 +32,7 @@ vim.g.webdevicons_enable_airline_tabline = 1
 vim.g.webdevicons_enable_airline_statusline = 1
 
 -- set default colorscheme
-vim.cmd('colorscheme kanagawa-dragon')
+vim.cmd('colorscheme rose-pine')
 
 -- set default background
 -- vim.cmd('highlight Normal guibg=none') -- here I use a background image so it's none, i.e transparent bg
