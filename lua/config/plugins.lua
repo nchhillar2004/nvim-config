@@ -33,6 +33,9 @@ require("nvim-tree").setup{
             quit_on_open = true, -- automatically quit nvim-tree when opened a file
         },
     },
+    filters = {
+        git_ignored = false,
+    },
 }
 
 require('treesitter-context').setup{
