@@ -48,7 +48,7 @@ At last run this command to install LSP inside nvim:
   - `Space + 1`: Set background to black (`highlight Normal guibg=#000000`)
   - `Space + 2`: Use `rose-pine-main` colorscheme
   - `Space + 3`: Use `kanagawa` colorscheme
-  - `Space + 4`: Use `onedark` colorscheme
+  - `Space + 4`: Use `monokai` colorscheme
   - `Space + 5`: Use default colorscheme
 
 - **Move Lines (Normal Mode)**

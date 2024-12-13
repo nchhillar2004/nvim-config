@@ -1,9 +1,5 @@
 require("ibl").setup()
 
-require('onedark').setup {
-    style = 'darker'
-}
-
 -- setup & config plugins for custom use
 require("bufferline").setup({
     options = {

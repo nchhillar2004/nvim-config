@@ -17,6 +17,8 @@
             "rootPatterns": [".fortls", ".git/"]
         }
     },
+    "suggest.noSelect": true,
+    "suggest.enablePreselect": false,
     "coc.preferences.autoupdate": false,
     "diagnostic.enable": false,
     "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/18.1.3/clangd_18.1.3/bin/clangd"
