@@ -3,7 +3,7 @@ return {
     { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
     { 'rose-pine/neovim', name = 'rose-pine' },
     { 'rebelot/kanagawa.nvim' },
-    { 'navarasu/onedark.nvim' },
+    { 'ficcdaf/ashen.nvim' },
     { 'mg979/vim-visual-multi', branch = 'master' },
     { 'tpope/vim-fugitive' },
     { 'lukas-reineke/indent-blankline.nvim' },
