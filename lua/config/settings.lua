@@ -16,11 +16,12 @@ vim.o.incsearch = true
 -- set cursor to block
 vim.o.guicursor = ""
 vim.o.scrolloff = 8
-vim.opt.completeopt = 'noinsert', 'menuone', 'noselect'
+vim.o.completeopt = 'noinsert', 'menuone', 'noselect'
 vim.o.wildmenu = true
 vim.o.title = true
 vim.o.cursorline = true
 vim.o.termguicolors = true
+vim.o.swapfile = false
 
 -- used by vim-devicons and airline
 vim.o.encoding = 'utf-8'
@@ -43,3 +44,11 @@ autocmd BufRead,BufNewFile *.ejs set filetype=html
 autocmd BufRead,BufNewFile *.jsp set filetype=html
 ]])
 
+-- diable auto indent and code suggestion in asm files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "asm",
+    command = [[
+    setlocal indentexpr=
+    let b:coc_suggest_disable = 1
+    ]]
+})
