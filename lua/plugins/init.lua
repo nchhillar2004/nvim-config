@@ -4,6 +4,7 @@ return {
     { 'rose-pine/neovim', name = 'rose-pine' },
     { 'rebelot/kanagawa.nvim' },
     { 'ficcdaf/ashen.nvim' },
+    { 'sainnhe/gruvbox-material' },
     { 'mg979/vim-visual-multi', branch = 'master' },
     { 'tpope/vim-fugitive' },
     { 'lukas-reineke/indent-blankline.nvim' },
@@ -16,5 +17,7 @@ return {
     { 'prettier/vim-prettier' },
     { 'akinsho/bufferline.nvim', version = "*" },
     { 'nvim-tree/nvim-tree.lua' },
-    { 'nvim-tree/nvim-web-devicons' }
+    { 'nvim-tree/nvim-web-devicons' },
+    { 'ziglang/zig.vim' },
+    { 'neoclide/jsonc.vim' }
 }

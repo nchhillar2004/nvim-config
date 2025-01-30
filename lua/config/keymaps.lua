@@ -25,8 +25,8 @@ vim.keymap.set('n', '<leader>0', '<cmd>highlight Normal guibg=none<CR>')
 vim.keymap.set('n', '<leader>1', '<cmd>highlight Normal guibg=#000000<CR>')
 vim.keymap.set('n', '<leader>2', '<cmd>colorscheme rose-pine-main<CR>')
 vim.keymap.set('n', '<leader>3', '<cmd>colorscheme kanagawa-dragon<CR>')
-vim.keymap.set('n', '<leader>4', '<cmd>colorscheme ashen<CR>')
-vim.keymap.set('n', '<leader>5', '<cmd>colorscheme default<CR>')
+vim.keymap.set('n', '<leader>4', '<cmd>colorscheme gruvbox-material<CR>')
+vim.keymap.set('n', '<leader>5', '<cmd>colorscheme ashen<CR>')
 
 -- move line UP/ DOWN in Visual mode
 vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv") -- shift + j, move current line up
