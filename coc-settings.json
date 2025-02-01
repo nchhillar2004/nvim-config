@@ -1,40 +1,7 @@
-// coc settings for linux
+// coc settings for windows
 {
-    "zig.enabled": true,
-    "zig.startUpMessage": false,
-    "zig.path": "zls",
-    "zig.debugLog": false,
-    "[zig]": {
-        "coc.preferences.formatOnSave": true,
-        "inlayHint.enable": false,
-        "semanticTokens.enable": true
-    },
-    "languageserver": {
-        "zls": {
-            "command": "/usr/bin/zls",
-            "filetypes": [ "zig", "zon" ],
-            "settings": {
-                "zls.zig_exe_path": "/usr/bin/zig"
-            }
-        },
-        "haskell": {
-            "command": "haskell-language-server-wrapper",
-            "args": ["--lsp"],
-            "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
-            "filetypes": ["haskell", "lhaskell"]
-        }
-        //"fortran": {
-            //    "command": "fortls",
-            //    "filetypes": ["fortran"],
-            //    "rootPatterns": [".fortls", ".git/"]
-            //},
-    },
     "suggest.noSelect": true,
     "suggest.enablePreselect": false,
     "coc.preferences.autoupdate": false,
     "diagnostic.enable": false,
-    "rust-analyzer.cargo.loadOutDirsFromCheck": false,
-    "rust-analyzer.procMacro.enable": false,
-    "rust-analyzer.diagnostics.enable": false,
-    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/19.1.2/clangd_19.1.2/bin/clangd"
 }

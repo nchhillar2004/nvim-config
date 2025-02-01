@@ -32,7 +32,7 @@ vim.keymap.set('n', '<leader>5', '<cmd>colorscheme ashen<CR>')
 vim.keymap.set('v', "J", ":m '>+1<CR>gv=gv") -- shift + j, move current line up
 vim.keymap.set('v', "K", ":m '<-2<CR>gv=gv") -- shift + k
 
-vim.keymap.set('n', '<C-s>', '<cmd>w<CR>') -- save file, write
+vim.keymap.set('n', '<C-s>', '<cmd>w!<CR>') -- save file, write
 vim.keymap.set('n', '<C-a>', 'ggVG', opts) -- select all
 vim.keymap.set('n', '<C-c>', '"+y', opts) -- copy all
 vim.keymap.set('v', '<C-c>', '"+y', opts)
