@@ -13,7 +13,7 @@ mkdir nvim
 cd nvim
 ```
 ```shell
-git clone https://github.com/nchhillar2004/nvim-config.git .
+git clone -branch windows https://github.com/nchhillar2004/nvim-config.git .
 ```
 Run neovim using the ```nvim``` command in terminal. All the plugins will be installed automatically.
 
@@ -21,6 +21,10 @@ At last run this command to install LSP inside nvim:
 ```
 :CocInstall coc-java coc-go coc-clangd coc-tsserver coc-pyright coc-r-lsp coc-prettier coc-html coc-css coc-json @yaegassy/coc-tailwindcss3
 ```
+
+### Linux
+
+Checkout [Linux configs](https://github.com/nchhillar2004/nvim-config/blob/main/README.md)
 
 ## Keymaps
 - `vim.g.mapleader = " "`: Set mapleader to Space
