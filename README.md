@@ -16,18 +16,8 @@ git clone https://github.com/nchhillar2004/nvim-config.git ~/.config/nvim
 _NOTE: Use Linux for better plugins support_
 
 ### Windows
-```shell
-mkdir %appdata%\Local\nvim
-```
-```shell
-git clone https://github.com/nchhillar2004/nvim-config.git %appdata%\Local\nvim
-```
-Run neovim using the ```nvim``` command in terminal. All the plugins will be installed automatically.
 
-At last run this command to install LSP inside nvim:
-```
-:CocInstall coc-java coc-rust-analyzer coc-go coc-clangd coc-tsserver coc-pyright coc-r-lsp coc-lua coc-prettier coc-html coc-css coc-json coc-perl @yaegassy/coc-tailwindcss3
-```
+Checkout [Windows config](https://github.com/nchhillar2004/nvim-config/blob/windows/README.md)
 
 ## Keymaps
 - `vim.g.mapleader = " "`: Set mapleader to Space
@@ -48,8 +38,8 @@ At last run this command to install LSP inside nvim:
   - `Space + 1`: Set background to black (`highlight Normal guibg=#000000`)
   - `Space + 2`: Use `rose-pine-main` colorscheme
   - `Space + 3`: Use `kanagawa` colorscheme
-  - `Space + 4`: Use `onedark` colorscheme
-  - `Space + 5`: Use default colorscheme
+  - `Space + 4`: Use `gruvbox` colorscheme
+  - `Space + 5`: Use `ashen` colorscheme
 
 - **Move Lines (Normal Mode)**
   - `Alt + j`: Move current line down (`<cmd>m+1<CR>==`)
