@@ -13,7 +13,7 @@ mkdir nvim
 cd nvim
 ```
 ```shell
-git clone -branch windows https://github.com/nchhillar2004/nvim-config.git .
+git clone -b windows https://github.com/nchhillar2004/nvim-config.git .
 ```
 Run neovim using the ```nvim``` command in terminal. All the plugins will be installed automatically.
 
