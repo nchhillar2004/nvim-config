@@ -1,9 +1,12 @@
 # NeoVim Config
-This is my own nvim config using [lazy.nvim](https://github.com/folke/lazy.nvim) and some selected plugins.
+My own nvim config using [lazy.nvim](https://github.com/folke/lazy.nvim) and some selected plugins.
+
+This is the main branch (for linux), checkout [windows](https://github.com/nchhillar2004/nvim-config/blob/windows/README.md) branch for windows configs.
 
 ## Installation
-Download [NeoVim](https://neovim.io/).
-Then, run the following commands according to your operating system
+Download [Neovim](https://neovim.io/).
+
+Then, run the following commands
 
 ### Linux
 ```bash
