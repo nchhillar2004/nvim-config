@@ -15,6 +15,13 @@ return {
                 }
             })
 
+            local cmp_lsp = require("cmp_nvim_lsp")
+            local capabilities = vim.tbl_deep_extend(
+                "force",
+                {},
+                vim.lsp.protocol.make_client_capabilities(),
+                cmp_lsp.default_capabilities())
+
             require('mason').setup({
                 ui = {
                     border = 'none',
@@ -23,22 +30,33 @@ return {
                 },
             })
             require("mason-lspconfig").setup {
-                ensure_installed = { "ts_ls", "jdtls", "sqls", "pyright", "gopls", "clangd", "bashls", "lua_ls", "rust_analyzer", "html", "tailwindcss" },
+                ensure_installed = { "ts_ls", "jdtls", "sqls", "pyright", "gopls", "clangd",
+                    "bashls", "lua_ls", "rust_analyzer", "html", "tailwindcss" },
+                handlers = {
+                    ["lua_ls"] = function()
+                        local lspconfig = require("lspconfig")
+                        lspconfig.lua_ls.setup {
+                            capabilities = capabilities,
+                            settings = {
+                                Lua = {
+                                    runtime = { version = "Lua 5.4" },
+                                    diagnostics = {
+                                        globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
+                                    }
+                                }
+                            }
+                        }
+                    end,
+                }
             }
 
             local lspconfig = require('lspconfig')
 
-            local on_attach = function(client, bufnr)
-                local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-                local opts = { noremap = true, silent = true }
-
-                buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-                buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-                buf_set_keymap('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-            end
-
-            lspconfig.pyright.setup{}
             lspconfig.ts_ls.setup{}
+            lspconfig.jdtls.setup{}
+            lspconfig.gopls.setup{}
+            lspconfig.clangd.setup{}
+            lspconfig.pyright.setup{}
 
             local cmp = require('cmp')
             local luasnip = require('luasnip')
@@ -58,6 +76,18 @@ return {
                 sources = {
                     { name = 'nvim_lsp' },
                     { name = 'luasnip' },
+                },
+            })
+
+            vim.diagnostic.config({
+                -- update_in_insert = true,
+                float = {
+                    focusable = false,
+                    style = "minimal",
+                    border = "rounded",
+                    source = "always",
+                    header = "",
+                    prefix = "",
                 },
             })
         end
