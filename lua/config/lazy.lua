@@ -23,3 +23,7 @@ require("lazy").setup({
     },
     checker = { enabled = false },
 })
+
+vim.api.nvim_create_user_command('LazySync', function()
+    require('lazy').sync()
+end, {})
