@@ -7,32 +7,55 @@ return {
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/nvim-cmp",
             "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip"
+            "saadparwaiz1/cmp_luasnip",
+            "windwp/nvim-ts-autotag"
         },
         config = function()
             require("conform").setup({
                 formatters_by_ft = {
+                    lua = { "stylua" },
+                    javascript = { "prettier" },
+                }
+            })
+
+            require('nvim-ts-autotag').setup({
+                opts = {
+                    enable_close = true,
+                    enable_rename = true,
+                    enable_close_on_slash = false
+                },
+                per_filetype = {
+                    ["html"] = {
+                        enable_close = true
+                    }
                 }
             })
 
             local cmp_lsp = require("cmp_nvim_lsp")
             local capabilities = vim.tbl_deep_extend(
                 "force",
-                {},
                 vim.lsp.protocol.make_client_capabilities(),
                 cmp_lsp.default_capabilities())
 
-            require('mason').setup({
+            require("mason").setup({
                 ui = {
-                    border = 'none',
-                    show_progress = false,
-                    notification = false,
+                    border = "rounded",
+                    icons = {
+                        package_installed = "✓",
+                        package_pending = "➜",
+                        package_uninstalled = "✗"
+                    }
                 },
             })
             require("mason-lspconfig").setup {
                 ensure_installed = { "ts_ls", "jdtls", "sqls", "pyright", "gopls", "clangd",
                     "bashls", "lua_ls", "rust_analyzer", "html", "tailwindcss" },
                 handlers = {
+                    function(server_name) -- Default handler
+                        require("lspconfig")[server_name].setup({
+                            capabilities = capabilities
+                        })
+                    end,
                     ["lua_ls"] = function()
                         local lspconfig = require("lspconfig")
                         lspconfig.lua_ls.setup {
@@ -49,14 +72,6 @@ return {
                     end,
                 }
             }
-
-            local lspconfig = require('lspconfig')
-
-            lspconfig.ts_ls.setup{}
-            lspconfig.jdtls.setup{}
-            lspconfig.gopls.setup{}
-            lspconfig.clangd.setup{}
-            lspconfig.pyright.setup{}
 
             local cmp = require('cmp')
             local luasnip = require('luasnip')
@@ -90,6 +105,23 @@ return {
                     prefix = "",
                 },
             })
+
+            local on_attach = function(_, bufnr)
+                local opts = { buffer = bufnr, noremap = true, silent = true }
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+            end
+
+            local lspconfig = require("lspconfig")
+            for _, server in ipairs({ "ts_ls", "jdtls", "gopls", "clangd", "pyright", "html", "rust_analyzer" }) do
+                lspconfig[server].setup({
+                    capabilities = capabilities,
+                    on_attach = on_attach
+                })
+            end
         end
     }
 }

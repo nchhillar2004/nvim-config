@@ -7,9 +7,6 @@ return {
                         quit_on_open = true, -- automatically quit nvim-tree when opened a file
                     },
                 },
-                filters = {
-                    git_ignored = false,
-                },
                 sort = {
                     sorter = "case_sensitive",
                 },
@@ -20,7 +17,8 @@ return {
                     group_empty = true,
                 },
                 filters = {
-                    dotfiles = true,
+                    git_ignored = false,
+                    dotfiles = false,
                 },
             })
         end
