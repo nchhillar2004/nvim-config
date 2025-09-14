@@ -49,7 +49,7 @@ return {
             })
             require("mason-lspconfig").setup {
                 ensure_installed = { "ts_ls", "jdtls", "sqls", "pyright", "gopls", "clangd",
-                    "bashls", "lua_ls", "rust_analyzer", "html", "tailwindcss" },
+                    "bashls", "lua_ls", "rust_analyzer", "html", "tailwindcss", "prismals" },
                 handlers = {
                     function(server_name) -- Default handler
                         require("lspconfig")[server_name].setup({
