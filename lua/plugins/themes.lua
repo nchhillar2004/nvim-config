@@ -10,6 +10,7 @@ return {
             config = function()
                 require('ashen')
             end
-        }
+        },
+        { 'projekt0n/github-nvim-theme', name = 'github-theme' }
     }
 }

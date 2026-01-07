@@ -11,7 +11,7 @@ vim.o.colorcolumn='120'
 vim.o.hlsearch = false
 vim.o.incsearch = true
 
-vim.o.guicursor = "n-v-i:block"
+vim.o.guicursor = "a:block-blinkon500-blinkoff550"
 vim.o.scrolloff = 8
 vim.o.completeopt = 'noinsert', 'menuone', 'noselect'
 vim.o.wildmenu = true
