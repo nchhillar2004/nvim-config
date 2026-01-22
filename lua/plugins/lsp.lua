@@ -1,5 +1,6 @@
 return {
-    { 'neovim/nvim-lspconfig',
+    {
+        "neovim/nvim-lspconfig",
         dependencies = {
             "stevearc/conform.nvim",
             "williamboman/mason.nvim",
@@ -8,73 +9,134 @@ return {
             "hrsh7th/nvim-cmp",
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
-            "windwp/nvim-ts-autotag"
+            "windwp/nvim-ts-autotag",
         },
         config = function()
+            -- =====================
+            -- Formatting
+            -- =====================
             require("conform").setup({
                 formatters_by_ft = {
                     lua = { "stylua" },
                     javascript = { "prettier" },
-                }
+                },
             })
 
-            require('nvim-ts-autotag').setup({
+            -- =====================
+            -- Treesitter autotag
+            -- =====================
+            require("nvim-ts-autotag").setup({
                 opts = {
                     enable_close = true,
                     enable_rename = true,
-                    enable_close_on_slash = false
+                    enable_close_on_slash = false,
                 },
                 per_filetype = {
-                    ["html"] = {
-                        enable_close = true
-                    }
-                }
+                    html = { enable_close = true },
+                },
             })
 
-            local cmp_lsp = require("cmp_nvim_lsp")
-            local capabilities = vim.tbl_deep_extend(
-                "force",
-                vim.lsp.protocol.make_client_capabilities(),
-                cmp_lsp.default_capabilities())
+            -- =====================
+            -- LSP capabilities
+            -- =====================
+            local capabilities =
+            require("cmp_nvim_lsp").default_capabilities(
+                vim.lsp.protocol.make_client_capabilities()
+            )
 
+            local on_attach = function(_, bufnr)
+                local opts = { buffer = bufnr, silent = true }
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+            end
+
+            -- =====================
+            -- Mason
+            -- =====================
             require("mason").setup({
                 ui = {
                     border = "rounded",
                     icons = {
                         package_installed = "✓",
                         package_pending = "➜",
-                        package_uninstalled = "✗"
-                    }
+                        package_uninstalled = "✗",
+                    },
                 },
             })
-            require("mason-lspconfig").setup {
-                ensure_installed = { "ts_ls", "jdtls", "sqls", "pyright", "gopls", "clangd",
-                    "bashls", "lua_ls", "rust_analyzer", "html", "tailwindcss", "prismals" },
-                handlers = {
-                    function(server_name) -- Default handler
-                        require("lspconfig")[server_name].setup({
-                            capabilities = capabilities
-                        })
-                    end,
-                    ["lua_ls"] = function()
-                        local lspconfig = require("lspconfig")
-                        lspconfig.lua_ls.setup {
-                            capabilities = capabilities,
-                            settings = {
-                                Lua = {
-                                    runtime = { version = "Lua 5.4" },
-                                    diagnostics = {
-                                        globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                                    }
-                                }
-                            }
-                        }
-                    end,
-                }
+
+            require("mason-lspconfig").setup({
+                ensure_installed = {
+                    "ts_ls",
+                    "jdtls",
+                    "sqls",
+                    "pyright",
+                    "gopls",
+                    "clangd",
+                    "bashls",
+                    "lua_ls",
+                    "rust_analyzer",
+                    "html",
+                    "tailwindcss",
+                    "prismals",
+                },
+            })
+
+            -- =====================
+            -- LSP configs (NEW API)
+            -- =====================
+            local servers = {
+                "ts_ls",
+                "jdtls",
+                "sqls",
+                "pyright",
+                "gopls",
+                "clangd",
+                "bashls",
+                "rust_analyzer",
+                "html",
+                "tailwindcss",
+                "prismals",
             }
 
-            local cmp = require('cmp')
-            local luasnip = require('luasnip')
+            for _, server in ipairs(servers) do
+                vim.lsp.config(server, {
+                    capabilities = capabilities,
+                    on_attach = on_attach,
+                })
+            end
+
+            -- Lua special case
+            vim.lsp.config("lua_ls", {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                settings = {
+                    Lua = {
+                        runtime = { version = "Lua 5.4" },
+                        diagnostics = {
+                            globals = {
+                                "vim",
+                                "bit",
+                                "it",
+                                "describe",
+                                "before_each",
+                                "after_each",
+                            },
+                        },
+                    },
+                },
+            })
+
+            -- Enable everything
+            vim.lsp.enable(vim.tbl_extend("force", servers, { "lua_ls" }))
+
+            -- =====================
+            -- CMP
+            -- =====================
+            local cmp = require("cmp")
+            local luasnip = require("luasnip")
 
             cmp.setup({
                 snippet = {
@@ -83,19 +145,21 @@ return {
                     end,
                 },
                 mapping = {
-                    ['<C-Space>'] = cmp.mapping.complete(),
-                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-                    ['<Down>'] = cmp.mapping.select_next_item(),
-                    ['<Up>'] = cmp.mapping.select_prev_item()
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+                    ["<Down>"] = cmp.mapping.select_next_item(),
+                    ["<Up>"] = cmp.mapping.select_prev_item(),
                 },
                 sources = {
-                    { name = 'nvim_lsp' },
-                    { name = 'luasnip' },
+                    { name = "nvim_lsp" },
+                    { name = "luasnip" },
                 },
             })
 
+            -- =====================
+            -- Diagnostics UI
+            -- =====================
             vim.diagnostic.config({
-                -- update_in_insert = true,
                 float = {
                     focusable = false,
                     style = "minimal",
@@ -105,23 +169,6 @@ return {
                     prefix = "",
                 },
             })
-
-            local on_attach = function(_, bufnr)
-                local opts = { buffer = bufnr, noremap = true, silent = true }
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-            end
-
-            local lspconfig = require("lspconfig")
-            for _, server in ipairs({ "ts_ls", "jdtls", "gopls", "clangd", "pyright", "html", "rust_analyzer" }) do
-                lspconfig[server].setup({
-                    capabilities = capabilities,
-                    on_attach = on_attach
-                })
-            end
-        end
-    }
+        end,
+    },
 }

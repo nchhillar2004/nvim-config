@@ -26,30 +26,42 @@ vim.keymap.set('n', '<leader>p', ':Prettier<CR>', opts) -- provied better format
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' }) -- find files
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' }) -- search content inside files
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' }) -- find from buffers
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Help tags' })
-vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = 'Git files' })
+vim.keymap.set('n', '<leader>ff', function()
+  require('telescope.builtin').find_files()
+end, { desc = 'Telescope find files' })
+
+vim.keymap.set('n', '<leader>fg', function()
+  require('telescope.builtin').live_grep()
+end, { desc = 'Telescope live grep' })
+
+vim.keymap.set('n', '<leader>fb', function()
+  require('telescope.builtin').buffers()
+end, { desc = 'Telescope buffers' })
+
+vim.keymap.set('n', '<leader>fh', function()
+  require('telescope.builtin').help_tags()
+end, { desc = 'Help tags' })
+
+vim.keymap.set('n', '<C-p>', function()
+  require('telescope.builtin').git_files()
+end, { desc = 'Git files' })
+
+vim.keymap.set("n", "<leader>cp", function()
+  local ok, cmp = pcall(require, "cmp")
+  if not ok then
+    vim.notify("nvim-cmp not loaded", vim.log.levels.WARN)
+    return
+  end
+  cmp.setup({ enabled = not cmp.get_config().enabled })
+end)
 
 vim.keymap.set('n', '<leader>0', '<cmd>highlight Normal guibg=none<CR>')
 vim.keymap.set('n', '<leader>1', function()
     vim.cmd('highlight Normal guibg=#000')
     vim.cmd('highlight NormalNC guibg=#000')
 end)
--- disable suggestions in competitive programming mode
-vim.keymap.set("n", "<leader>cp", function()
-  local cmp = require("cmp")
-  cmp.setup({ enabled = not cmp.get_config().enabled })
-end)
-local SetThemeWithConfig = function(theme)
-    vim.cmd('colorscheme ' .. theme)
-    vim.cmd('highlight CursorLine ctermbg=225 guibg=#2e2e2e')
-end
 vim.keymap.set('n', '<leader>2', '<cmd>colorscheme rose-pine-main<CR>')
 vim.keymap.set('n', '<leader>3', '<cmd>colorscheme retrobox<CR>')
 vim.keymap.set('n', '<leader>4', '<cmd>colorscheme ashen<CR>')
 vim.keymap.set('n', '<leader>5', '<cmd>colorscheme github_dark_default<CR>')
-vim.keymap.set('n', '<leader>6', '<cmd>colorscheme github_light_default<CR>')
 vim.keymap.set('n', '<leader>9', '<cmd>colorscheme default<CR>')
