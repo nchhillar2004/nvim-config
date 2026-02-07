@@ -2,7 +2,19 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
+        priority = 1000,
         config = function()
+
+            require("nvim-web-devicons").setup({
+                override = {
+                    rs = {
+                        icon = "",
+                        color = "#ff9e64",
+                        name = "Rust"
+                    }
+                }
+            })
+
             local colors = {
                 red = '#ca1243',
                 grey = '#181818',
@@ -34,6 +46,7 @@ return {
                 },
                 replace = { a = { fg = colors.black, bg = colors.red } },
             }
+
             require('lualine').setup {
                 options = {
                     icons_enabled = true,

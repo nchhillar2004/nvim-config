@@ -45,15 +45,23 @@ end, { desc = 'Help tags' })
 vim.keymap.set('n', '<C-p>', function()
     require('telescope.builtin').git_files()
 end, { desc = 'Git files' })
+local cmp = require("cmp")
 
+local cmp_enabled = true
+
+cmp.setup({
+    enabled = function()
+        return cmp_enabled
+    end,
+})
 vim.keymap.set("n", "<leader>cp", function()
-    local ok, cmp = pcall(require, "cmp")
-    if not ok then
-        vim.notify("nvim-cmp not loaded", vim.log.levels.WARN)
-        return
+    cmp_enabled = not cmp_enabled
+    if cmp_enabled then
+        vim.notify("CMP enabled")
+    else
+        vim.notify("CMP disabled")
     end
-    cmp.setup({ enabled = not cmp.get_config().enabled })
-end)
+end, { desc = "Toggle completion" })
 
 vim.keymap.set('n', '<leader>0', '<cmd>highlight Normal guibg=none<CR>')
 vim.keymap.set('n', '<leader>1', function()
