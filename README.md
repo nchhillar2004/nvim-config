@@ -48,10 +48,9 @@ git clone https://github.com/nchhillar2004/nvim-config.git $env:APPDATA\nvim
   - `Space + 2`: `rose-pine-main` colorscheme
   - `Space + 3`: `gruvbox`
   - `Space + 4`: `ashen`
-  - `Space + 5`: `vim`
-  - `Space + 6`: `industry`
-  - `Space + 7`: `elflord`
-  - `Space + 8`: `delek` *(light theme)*
+  - `Space + 5`: `github-theme`
+  - `Space + 6`: `oxocarbon`
+  - `Space + 7`: `lackluster`
   - `Space + 9`: `default`
 
 - **Move Lines (Normal Mode)**

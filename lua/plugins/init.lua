@@ -3,7 +3,6 @@ return {
     { 'mg979/vim-visual-multi', branch = 'master' },
     { 'tpope/vim-fugitive' },
     { 'tpope/vim-sensible' },
-    { 'vim-airline/vim-airline' },
     { 'prettier/vim-prettier' },
     { 'nvim-tree/nvim-tree.lua' },
     { 'neoclide/jsonc.vim' },

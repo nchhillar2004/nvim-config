@@ -155,6 +155,10 @@ return {
                     { name = "luasnip" },
                 },
             })
+            
+            cmp.setup.filetype({ "c", "cpp" }, {
+                sources = {}
+            })
 
             -- =====================
             -- Diagnostics UI

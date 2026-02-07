@@ -2,7 +2,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('n', '<leader>f', ':normal! gg=G<CR>', opts)
 vim.keymap.set('n', '<leader>s', '<cmd>vsplit<CR>') -- vertical split
-vim.keymap.set('n', '<leader>c', '<cmd>highlight CursorLine ctermbg=235 guibg=#2e2e2e<CR>') -- change color of cursorline
+vim.keymap.set('n', '<leader>c', '<cmd>highlight CursorLine ctermbg=235 guibg=#121212<CR>') -- change color of cursorline
 
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>') -- save file, write
 vim.keymap.set('n', '<C-a>', 'ggVG', opts) -- select all
@@ -27,32 +27,32 @@ vim.keymap.set('n', '<leader>p', ':Prettier<CR>', opts) -- provied better format
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
 
 vim.keymap.set('n', '<leader>ff', function()
-  require('telescope.builtin').find_files()
+    require('telescope.builtin').find_files()
 end, { desc = 'Telescope find files' })
 
 vim.keymap.set('n', '<leader>fg', function()
-  require('telescope.builtin').live_grep()
+    require('telescope.builtin').live_grep()
 end, { desc = 'Telescope live grep' })
 
 vim.keymap.set('n', '<leader>fb', function()
-  require('telescope.builtin').buffers()
+    require('telescope.builtin').buffers()
 end, { desc = 'Telescope buffers' })
 
 vim.keymap.set('n', '<leader>fh', function()
-  require('telescope.builtin').help_tags()
+    require('telescope.builtin').help_tags()
 end, { desc = 'Help tags' })
 
 vim.keymap.set('n', '<C-p>', function()
-  require('telescope.builtin').git_files()
+    require('telescope.builtin').git_files()
 end, { desc = 'Git files' })
 
 vim.keymap.set("n", "<leader>cp", function()
-  local ok, cmp = pcall(require, "cmp")
-  if not ok then
-    vim.notify("nvim-cmp not loaded", vim.log.levels.WARN)
-    return
-  end
-  cmp.setup({ enabled = not cmp.get_config().enabled })
+    local ok, cmp = pcall(require, "cmp")
+    if not ok then
+        vim.notify("nvim-cmp not loaded", vim.log.levels.WARN)
+        return
+    end
+    cmp.setup({ enabled = not cmp.get_config().enabled })
 end)
 
 vim.keymap.set('n', '<leader>0', '<cmd>highlight Normal guibg=none<CR>')
@@ -61,7 +61,9 @@ vim.keymap.set('n', '<leader>1', function()
     vim.cmd('highlight NormalNC guibg=#000')
 end)
 vim.keymap.set('n', '<leader>2', '<cmd>colorscheme rose-pine-main<CR>')
-vim.keymap.set('n', '<leader>3', '<cmd>colorscheme retrobox<CR>')
+vim.keymap.set('n', '<leader>3', '<cmd>colorscheme gruvbox<CR>')
 vim.keymap.set('n', '<leader>4', '<cmd>colorscheme ashen<CR>')
 vim.keymap.set('n', '<leader>5', '<cmd>colorscheme github_dark_default<CR>')
+vim.keymap.set('n', '<leader>6', '<cmd>colorscheme oxocarbon<CR>')
+vim.keymap.set('n', '<leader>7', '<cmd>colorscheme lackluster-hack<CR>')
 vim.keymap.set('n', '<leader>9', '<cmd>colorscheme default<CR>')
