@@ -11,12 +11,12 @@
 
 1. Clone the Repository
 
-  - Linux:
+- Linux:
 ```
 git clone https://github.com/nchhillar2004/nvim-config.git ~/.config/nvim
 ```
 
-  - Windows:
+- Windows:
 ```
 git clone https://github.com/nchhillar2004/nvim-config.git $env:APPDATA\nvim
 ```
@@ -47,10 +47,8 @@ git clone https://github.com/nchhillar2004/nvim-config.git $env:APPDATA\nvim
   - `Space + 1`: Set background to black (`highlight Normal guibg=#000000`)
   - `Space + 2`: `rose-pine-main` colorscheme
   - `Space + 3`: `gruvbox`
-  - `Space + 4`: `ashen`
-  - `Space + 5`: `github-theme`
-  - `Space + 6`: `oxocarbon`
-  - `Space + 7`: `lackluster`
+  - `Space + 4`: `gruber-darker`
+  - `Space + 5`: `lackluster`
   - `Space + 9`: `default`
 
 - **Move Lines (Normal Mode)**
@@ -74,14 +72,3 @@ git clone https://github.com/nchhillar2004/nvim-config.git $env:APPDATA\nvim
   - `0`: Go to the beginning of the line
   - `^`: Go to the first non-blank character of the line
   - `$`: Go to the end of the line
-
-### Screenshots
-Telescope:
-![telescope](https://github.com/user-attachments/assets/762bac90-51f5-48bd-8c63-c1a0ba0d77b8)
-
-LPS + CMP:
-![Screenshot_2025-02-27_11-00-21](https://github.com/user-attachments/assets/291b81f2-1528-4500-be9b-a6914ff04268)
-![lsp](https://github.com/user-attachments/assets/d05db10b-4bef-495a-a81f-3d2aeed60313)
-
-Colorschemes:
-![screenrecording1-2025-02-27_10 38 07 (online-video-cutter com)](https://github.com/user-attachments/assets/0b37fc0f-6b15-4478-9455-501cbe88fcba)
