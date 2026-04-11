@@ -19,7 +19,7 @@ return {
                 formatters = {
                     clang_format = {
                         prepend_args = {
-                            "--style={BasedOnStyle: LLVM, IndentWidth: 4, NamespaceIndentation: All, ColumnLimit: 120}"
+                            "--style={BasedOnStyle: LLVM, IndentWidth: 4, NamespaceIndentation: All, ColumnLimit: 120, AllowShortFunctionsOnASingleLine: None, AllowShortEnumsOnASingleLine: false}"
                         },
                     },
                 },
