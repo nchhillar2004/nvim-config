@@ -1,6 +1,13 @@
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
-vim.keymap.set('n', '<leader>f', ':normal! gg=G<CR>', opts)
+
+-- clang-format
+vim.keymap.set("n", "<leader>f", function()
+    require("conform").format()
+end, opts)
+
+-- vim indent (fallback)
+vim.keymap.set("n", "<leader>=", ":normal! gg=G<CR>", opts)
 vim.keymap.set('n', '<leader>s', '<cmd>vsplit<CR>') -- vertical split
 vim.keymap.set('n', '<leader>c', '<cmd>highlight CursorLine ctermbg=235 guibg=#121212<CR>') -- change color of cursorline
 

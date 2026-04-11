@@ -16,7 +16,16 @@ return {
             -- Formatting
             -- =====================
             require("conform").setup({
+                formatters = {
+                    clang_format = {
+                        prepend_args = {
+                            "--style={BasedOnStyle: LLVM, IndentWidth: 4, NamespaceIndentation: All}"
+                        },
+                    },
+                },
                 formatters_by_ft = {
+                    cpp = { "clang_format" },
+                    c = { "clang_format" },
                     lua = { "stylua" },
                     javascript = { "prettier" },
                 },
@@ -107,6 +116,16 @@ return {
                     on_attach = on_attach,
                 })
             end
+
+            vim.lsp.config("clangd", {
+                capabilities = capabilities,
+                on_attach = on_attach,
+                cmd = {
+                    "clangd",
+                    "--background-index",
+                    "--index-file=" .. os.getenv("HOME") .. "/.cache/clangd/index"
+                },
+            })
 
             -- Lua special case
             vim.lsp.config("lua_ls", {
