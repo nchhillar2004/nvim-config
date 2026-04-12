@@ -1,7 +1,7 @@
---vim.cmd('highlight Normal guibg=#000')
---vim.cmd('highlight NormalNC guibg=#000')
+vim.cmd('highlight Normal guibg=#000')
+vim.cmd('highlight NormalNC guibg=#000')
 vim.api.nvim_set_hl(0, "CursorLine", {
-  bg = "#121212",
+  bg = "#101010",
   nocombine = true,
 })
 

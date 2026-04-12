@@ -74,6 +74,10 @@ vim.keymap.set('n', '<leader>0', '<cmd>highlight Normal guibg=none<CR>')
 vim.keymap.set('n', '<leader>1', function()
     vim.cmd('highlight Normal guibg=#000')
     vim.cmd('highlight NormalNC guibg=#000')
+        vim.api.nvim_set_hl(0, "CursorLine", {
+        bg = "#101010",
+        nocombine = true,
+    })
 end)
 vim.keymap.set('n', '<leader>2', '<cmd>colorscheme rose-pine-main<CR>')
 vim.keymap.set('n', '<leader>3', '<cmd>colorscheme gruvbox<CR>')
