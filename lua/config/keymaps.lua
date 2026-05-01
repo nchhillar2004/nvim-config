@@ -73,8 +73,8 @@ end, { desc = "Toggle completion" })
 
 vim.keymap.set('n', '<leader>0', '<cmd>highlight Normal guibg=none<CR>')
 vim.keymap.set('n', '<leader>1', function()
-    vim.cmd('highlight Normal guibg=#000')
-    vim.cmd('highlight NormalNC guibg=#000')
+    vim.cmd('highlight Normal guibg=#000000')
+    vim.cmd('highlight NormalNC guibg=#000000')
         vim.api.nvim_set_hl(0, "CursorLine", {
         bg = "#101010",
         nocombine = true,
