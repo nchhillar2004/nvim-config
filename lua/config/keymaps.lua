@@ -61,6 +61,7 @@ cmp.setup({
         return cmp_enabled
     end,
 })
+
 vim.keymap.set("n", "<leader>cp", function()
     cmp_enabled = not cmp_enabled
     if cmp_enabled then
@@ -84,3 +85,24 @@ vim.keymap.set('n', '<leader>3', '<cmd>colorscheme gruvbox<CR>')
 vim.keymap.set('n', '<leader>4', '<cmd>colorscheme gruber-darker<CR>')
 vim.keymap.set('n', '<leader>5', '<cmd>colorscheme lackluster-hack<CR>')
 vim.keymap.set('n', '<leader>9', '<cmd>colorscheme default<CR>')
+
+
+vim.keymap.set("n", "<leader>r", function()
+    vim.cmd("write")
+
+    local file = vim.fn.expand("%:p")
+    local exe  = vim.fn.expand("%:r")
+
+    local cmd = "g++ -O2 -Wall -Wextra '" .. file .. "' -o '" .. exe .. "' && './" .. exe .. "'; echo; read -p 'Press Enter to exit...'"
+
+    vim.fn.jobstart({
+        "alacritty",
+        "--class", "runterm",
+        "-e",
+        "bash",
+        "-c",
+        cmd
+    }, {
+        detach = true
+    })
+end)
