@@ -9,6 +9,7 @@ end, opts)
 -- vim indent (fallback)
 vim.keymap.set("n", "<leader>=", ":normal! gg=G<CR>", opts)
 vim.keymap.set('n', '<leader>s', '<cmd>vsplit<CR>') -- vertical split
+vim.keymap.set('n', '<leader>h', '<cmd>split<CR>') -- horizontal split
 vim.keymap.set('n', '<leader>c', '<cmd>highlight CursorLine ctermbg=235 guibg=#121212<CR>') -- change color of cursorline
 
 vim.keymap.set('n', '<C-s>', '<cmd>w<CR>') -- save file, write
@@ -17,6 +18,7 @@ vim.keymap.set('n', '<C-c>', '"+y', opts) -- copy all
 vim.keymap.set('v', '<C-c>', '"+y', opts)
 vim.keymap.set('n', '<C-v>', '"+p', opts)
 vim.keymap.set('v', '<C-v>', '"+p', opts) -- paste
+vim.keymap.set('n', '<C-q>', '<cmd>q<CR>') -- quit window
 vim.keymap.set('n', '<C-/>', ':s/^/--/<CR>', opts)
 
 -- move line UP/ DOWN in normal mode

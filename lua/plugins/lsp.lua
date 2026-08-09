@@ -79,7 +79,6 @@ return {
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "ts_ls",
-                    "jdtls",
                     "sqls",
                     "pyright",
                     "gopls",
@@ -104,6 +103,7 @@ return {
                 "gopls",
                 "clangd",
                 "bashls",
+                "stylua",
                 "rust_analyzer",
                 "html",
                 "tailwindcss",

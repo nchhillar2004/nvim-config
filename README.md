@@ -34,6 +34,7 @@ git clone https://github.com/nchhillar2004/nvim-config.git $env:APPDATA\nvim
   - `Space + p`: Format with Prettier (for tsx/jsx files)
   - `Space + b`: Switch to the last buffer
   - `Space + s`: Split window vertically
+  - `Space + h`: Split window horizontally
   - `Space + pv`: Open Ex command line (`vim.cmd.Ex`)
   - `Space + ff`: Find files using Telescope
   - `Space + fg`: Live grep (search content inside files) with Telescope
@@ -65,6 +66,7 @@ git clone https://github.com/nchhillar2004/nvim-config.git $env:APPDATA\nvim
   - `Ctrl + a`: Select all (`ggVG`)
   - `Ctrl + c`: Copy all to clipboard (`"+y`)
   - `Ctrl + v`: Paste from clipboard (`"+p`)
+  - `Ctrl + q`: Quit current window (`:q`)
 
 - **Navigation Mappings**
   - `gg`: Go to the top of the file
