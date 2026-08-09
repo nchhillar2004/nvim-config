@@ -1,7 +1,7 @@
 local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
--- clang-format
+-- format
 vim.keymap.set("n", "<leader>f", function()
     require("conform").format()
 end, opts)
