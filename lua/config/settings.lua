@@ -13,7 +13,7 @@ vim.o.incsearch = true
 
 vim.o.guicursor = "a:block-blinkon200-blinkoff250"
 vim.o.scrolloff = 8
-vim.o.completeopt = 'noinsert', 'menuone', 'noselect'
+vim.o.completeopt = "noinsert,menuone,noselect"
 vim.o.wildmenu = true
 vim.o.title = true
 vim.o.cursorline = true

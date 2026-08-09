@@ -1,199 +1,216 @@
 return {
-    {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-            "stevearc/conform.nvim",
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/nvim-cmp",
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip",
-            "windwp/nvim-ts-autotag",
-        },
-        config = function()
-            -- =====================
-            -- Formatting
-            -- =====================
-            require("conform").setup({
-                formatters = {
-                    clang_format = {
-                        prepend_args = {
-                            "--style={BasedOnStyle: LLVM, IndentWidth: 4, NamespaceIndentation: All, ColumnLimit: 120, AllowShortFunctionsOnASingleLine: None, AllowShortEnumsOnASingleLine: false}"
-                        },
-                    },
-                },
-                formatters_by_ft = {
-                    cpp = { "clang_format" },
-                    c = { "clang_format" },
-                    lua = { "stylua" },
-                    javascript = { "prettier" },
-                },
-            })
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"stevearc/conform.nvim",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/nvim-cmp",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"windwp/nvim-ts-autotag",
+		},
+		config = function()
+			-- =====================
+			-- Formatting
+			-- =====================
+			require("conform").setup({
+				formatters = {
+					clang_format = {
+						prepend_args = {
+							"--style={BasedOnStyle: LLVM, IndentWidth: 4, NamespaceIndentation: All, ColumnLimit: 120, AllowShortFunctionsOnASingleLine: None, AllowShortEnumsOnASingleLine: false}",
+						},
+					},
+				--[[	ocamlformat = {
+						prepend_args = {
+							"--function-indent=4",
+							"--let-binding-indent=4",
+							"--match-indent=4",
+							"--cases-exp-indent=4",
+							"--type-decl-indent=4",
+							"--type-decl=sparse",
+							"--match-indent-nested=always",
+							"--function-indent-nested=always",
+							"--let-binding-spacing=double-semicolon",
+                            "--parse-toplevel-phrases",
+                            "--if-then-else=vertical"
+						},
+					},]]
+				},
+				formatters_by_ft = {
+					cpp = { "clang_format" },
+					c = { "clang_format" },
+					lua = { "stylua" },
+					javascript = { "prettier" },
+					typescript = { "prettier" },
+					typescriptreact = { "prettier" },
+					json = { "prettier" },
+					rust = { "rustfmt" },
+					asm = { "asmfmt" },
+				--	ocaml = { "ocamlformat" },
+				},
+			})
 
-            -- =====================
-            -- Treesitter autotag
-            -- =====================
-            require("nvim-ts-autotag").setup({
-                opts = {
-                    enable_close = true,
-                    enable_rename = true,
-                    enable_close_on_slash = false,
-                },
-                per_filetype = {
-                    html = { enable_close = true },
-                },
-            })
+			-- =====================
+			-- Treesitter autotag
+			-- =====================
+			require("nvim-ts-autotag").setup({
+				opts = {
+					enable_close = true,
+					enable_rename = true,
+					enable_close_on_slash = false,
+				},
+				per_filetype = {
+					html = { enable_close = true },
+				},
+			})
 
-            -- =====================
-            -- LSP capabilities
-            -- =====================
-            local capabilities =
-            require("cmp_nvim_lsp").default_capabilities(
-                vim.lsp.protocol.make_client_capabilities()
-            )
+			-- =====================
+			-- LSP capabilities
+			-- =====================
+			local capabilities =
+				require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-            local on_attach = function(_, bufnr)
-                local opts = { buffer = bufnr, silent = true }
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-            end
+			local on_attach = function(_, bufnr)
+				local opts = { buffer = bufnr, silent = true }
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+			end
 
-            -- =====================
-            -- Mason
-            -- =====================
-            require("mason").setup({
-                ui = {
-                    border = "rounded",
-                    icons = {
-                        package_installed = "✓",
-                        package_pending = "➜",
-                        package_uninstalled = "✗",
-                    },
-                },
-            })
+			-- =====================
+			-- Mason
+			-- =====================
+			require("mason").setup({
+				ui = {
+					border = "rounded",
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+			})
 
-            require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "ts_ls",
-                    "sqls",
-                    "pyright",
-                    "gopls",
-                    "clangd",
-                    "bashls",
-                    "lua_ls",
-                    "rust_analyzer",
-                    "html",
-                    "tailwindcss",
-                    "prismals",
-                },
-            })
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"ts_ls",
+					"sqls",
+					"pyright",
+					"gopls",
+					"clangd",
+					"bashls",
+					"lua_ls",
+					"rust_analyzer",
+					"html",
+					"tailwindcss",
+					"prismals",
+				},
+			})
 
-            -- =====================
-            -- LSP configs (NEW API)
-            -- =====================
-            local servers = {
-                "ts_ls",
-                "jdtls",
-                "sqls",
-                "pyright",
-                "gopls",
-                "clangd",
-                "bashls",
-                "stylua",
-                "rust_analyzer",
-                "html",
-                "tailwindcss",
-                "prismals",
-            }
+			-- =====================
+			-- LSP configs (NEW API)
+			-- =====================
+			local servers = {
+				"ts_ls",
+				"sqls",
+				"pyright",
+				"gopls",
+				"clangd",
+				"bashls",
+				"rust_analyzer",
+				"html",
+				"tailwindcss",
+				"prismals",
+			}
 
-            for _, server in ipairs(servers) do
-                vim.lsp.config(server, {
-                    capabilities = capabilities,
-                    on_attach = on_attach,
-                })
-            end
+			for _, server in ipairs(servers) do
+				vim.lsp.config(server, {
+					capabilities = capabilities,
+					on_attach = on_attach,
+				})
+			end
 
-            vim.lsp.config("clangd", {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                cmd = {
-                    "clangd",
-                    "--background-index",
-                    "--index-file=" .. os.getenv("HOME") .. "/.cache/clangd/index"
-                },
-            })
+			vim.lsp.config("clangd", {
+				capabilities = capabilities,
+				on_attach = on_attach,
+				cmd = {
+					"clangd",
+					"--background-index",
+					"--index-file=" .. os.getenv("HOME") .. "/.cache/clangd/index",
+				},
+			})
 
-            -- Lua special case
-            vim.lsp.config("lua_ls", {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = {
-                    Lua = {
-                        runtime = { version = "Lua 5.4" },
-                        diagnostics = {
-                            globals = {
-                                "vim",
-                                "bit",
-                                "it",
-                                "describe",
-                                "before_each",
-                                "after_each",
-                            },
-                        },
-                    },
-                },
-            })
+			-- Lua special case
+			vim.lsp.config("lua_ls", {
+				capabilities = capabilities,
+				on_attach = on_attach,
+				settings = {
+					Lua = {
+						runtime = { version = "Lua 5.4" },
+						diagnostics = {
+							globals = {
+								"vim",
+								"bit",
+								"it",
+								"describe",
+								"before_each",
+								"after_each",
+							},
+						},
+					},
+				},
+			})
 
-            -- Enable everything
-            vim.lsp.enable(vim.tbl_extend("force", servers, { "lua_ls" }))
+			-- Enable everything
+			vim.lsp.enable(vim.tbl_extend("force", servers, { "lua_ls" }))
 
-            -- =====================
-            -- CMP
-            -- =====================
-            local cmp = require("cmp")
-            local luasnip = require("luasnip")
+			-- =====================
+			-- CMP
+			-- =====================
+			local cmp = require("cmp")
+			local luasnip = require("luasnip")
 
-            cmp.setup({
-                snippet = {
-                    expand = function(args)
-                        luasnip.lsp_expand(args.body)
-                    end,
-                },
-                mapping = {
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
-                    ["<Down>"] = cmp.mapping.select_next_item(),
-                    ["<Up>"] = cmp.mapping.select_prev_item(),
-                },
-                sources = {
-                    { name = "nvim_lsp" },
-                    { name = "luasnip" },
-                },
-            })
+			cmp.setup({
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
+				mapping = {
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<CR>"] = cmp.mapping.confirm({ select = false }),
+					["<Down>"] = cmp.mapping.select_next_item(),
+					["<Up>"] = cmp.mapping.select_prev_item(),
+				},
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+				},
+			})
 
-            -- =====================
-            -- Diagnostics UI
-            -- =====================
-            vim.diagnostic.config({
-                virtual_text = {
-                    spacing = 2
-                },
-                signs = true,
-                underline = true,
-                update_in_insert = false,
-                float = {
-                    focusable = false,
-                    style = "minimal",
-                    border = "rounded",
-                    source = "always",
-                    header = "",
-                    prefix = "",
-                },
-            })
-        end,
-    },
+			-- =====================
+			-- Diagnostics UI
+			-- =====================
+			vim.diagnostic.config({
+				virtual_text = {
+					spacing = 2,
+				},
+				signs = true,
+				underline = true,
+				update_in_insert = false,
+				float = {
+					focusable = false,
+					style = "minimal",
+					border = "rounded",
+					source = "always",
+					header = "",
+					prefix = "",
+				},
+			})
+		end,
+	},
 }
