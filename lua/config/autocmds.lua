@@ -18,3 +18,9 @@ vim.api.nvim_create_autocmd("FileType", {
     setlocal indentexpr=
     ]]
 })
+
+vim.lsp.config("ocamllsp", {
+    cmd = { "ocamllsp" },
+})
+
+vim.lsp.enable("ocamllsp")
