@@ -23,4 +23,4 @@ vim.lsp.config("ocamllsp", {
     cmd = { "ocamllsp" },
 })
 
-vim.lsp.enable("ocamllsp")
+vim.cmd.colorscheme("gruber-darker")
